@@ -18,6 +18,10 @@
                 <li><a href="contacto.html">Contacto</a></li>
             </ul>
         </nav>
+        <div class="cart-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            <span class="cart-counter">0</span>
+        </div>
     </div>
     </header>
 
@@ -26,7 +30,7 @@
         <section class="about-us">
             <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; color: #2c3e50;">Nuestra Historia</h2>
             <div class="about-content">
-                <img src="https://placehold.co/600x400/BDC3C7/white?text=Nuestro+Taller" alt="Taller de ImpresionArte" class="about-image">
+                <img src="https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Taller de ImpresionArte" class="about-image">
                 <div class="about-text">
                     <h3>De la pasión local a la innovación digital</h3>
                     <p>ImpresionArte nació de la mano de Sara y Samuel, dos jóvenes emprendedores apasionados por la moda y la tecnología. Lo que comenzó como el único taller de impresión textil de la localidad, pronto se convirtió en un negocio próspero gracias a la dedicación y el trabajo de un pequeño equipo de siete personas.</p>
@@ -39,11 +43,28 @@
     </div>
     </main>
 
+<div class="cart-panel">
+    <div class="cart-header">
+        <h3>Tu Carrito</h3>
+        <button class="close-cart-btn">&times;</button>
+    </div>
+    <div class="cart-items"></div>
+    <div class="cart-footer">
+        <div class="cart-total">
+            <strong>Total:</strong> <span class="cart-total-amount">0.00 €</span>
+        </div>
+        <button class="button checkout-btn">Finalizar Compra</button>
+    </div>
+</div>
+<div class="cart-overlay"></div>
+
     <footer>
     <div class="container">
         <p>&copy; 2025 ImpresionArte. Todos los derechos reservados.</p>
         <p>Un proyecto de transformación digital de Sara y Samuel. | <a href="privacidad.html" style="color: #fff; text-decoration: none;">Política de Privacidad</a></p>
     </div>
     </footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>

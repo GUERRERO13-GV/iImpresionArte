@@ -182,6 +182,7 @@ header nav a:hover {
     z-index: 1000;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 .cart-panel.open {
@@ -366,6 +367,47 @@ header nav a:hover {
     color: #e67e22;
     text-decoration: none;
 }
+
+/* Payment Screen */
+.payment-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.payment-screen.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.payment-box {
+    background: #e67e22;
+    color: white;
+    padding: 3rem;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.payment-box h2 {
+    margin: 0 0 1.5rem 0;
+    font-size: 2rem;
+}
+
+.close-payment-btn {
+    background-color: #fff;
+    color: #e67e22;
+}
+
 
 /* Footer */
 footer {

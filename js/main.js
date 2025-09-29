@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- SELECTORES DEL DOM ---
     const cartIcon = document.querySelector('.cart-icon');
     const cartPanel = document.querySelector('.cart-panel');
     const cartOverlay = document.querySelector('.cart-overlay');
@@ -8,7 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartItemsContainer = document.querySelector('.cart-items');
     const cartCounter = document.querySelector('.cart-counter');
     const cartTotalAmount = document.querySelector('.cart-total-amount');
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    const paymentScreen = document.querySelector('.payment-screen');
+    const closePaymentBtn = document.querySelector('.close-payment-btn');
 
+    // --- ESTADO DEL CARRITO ---
     let cart = JSON.parse(localStorage.getItem('impresionarte_cart_v2')) || [];
 
     // --- FUNCIONES ---
@@ -21,6 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeCart = () => {
         cartPanel.classList.remove('open');
         cartOverlay.classList.remove('open');
+    };
+
+    const openPaymentScreen = () => {
+        paymentScreen.classList.add('open');
+    };
+
+    const closePaymentScreen = () => {
+        paymentScreen.classList.remove('open');
     };
 
     const saveCartToStorage = () => {
@@ -43,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cart.push({ ...product, quantity: 1 });
         }
         updateCart();
+        openCart(); // <-- ¡NUEVO! Abrir el carrito automáticamente.
     };
 
     const handleProductClick = (event) => {
@@ -59,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderCartItems = () => {
-        cartItemsContainer.innerHTML = ''; // Limpiar el contenedor
+        cartItemsContainer.innerHTML = '';
         if (cart.length === 0) {
             cartItemsContainer.innerHTML = '<p class="cart-empty-msg">Tu carrito está vacío.</p>';
             return;
@@ -106,12 +120,23 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCart();
     };
 
+    const handleCheckout = () => {
+        if (cart.length === 0) {
+            alert("Tu carrito está vacío. Añade algún producto antes de finalizar la compra.");
+            return;
+        }
+        closeCart();
+        openPaymentScreen();
+    };
+
 
     // --- EVENT LISTENERS ---
 
     if (cartIcon) cartIcon.addEventListener('click', openCart);
     if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
     if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+    if (checkoutBtn) checkoutBtn.addEventListener('click', handleCheckout);
+    if (closePaymentBtn) closePaymentBtn.addEventListener('click', closePaymentScreen);
 
     addToCartButtons.forEach(button => {
         button.addEventListener('click', handleProductClick);
@@ -122,5 +147,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- INICIALIZACIÓN ---
 
-    updateCart(); // Cargar carrito al iniciar la página
+    updateCart();
 });

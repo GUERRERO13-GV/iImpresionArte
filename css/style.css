@@ -81,6 +81,8 @@ header nav a:hover {
     text-decoration: none;
     border-radius: 5px;
     font-weight: bold;
+    cursor: pointer;
+    border: none;
 }
 
 .button:hover {
@@ -110,20 +112,26 @@ header nav a:hover {
     border: 1px solid #eaeaea;
     padding: 20px;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 .product-item img {
     max-width: 100%;
-    height: auto;
+    height: 200px;
+    object-fit: cover;
     border-radius: 5px;
-    background-color: #ecf0f1; /* Placeholder color */
-    min-height: 150px; /* Placeholder height */
+    background-color: #ecf0f1;
 }
 
 .product-item h4 {
     font-size: 1.2rem;
     margin: 1rem 0 0.5rem 0;
     color: #34495e;
+}
+
+.product-item p {
+    flex-grow: 1;
 }
 
 .product-item .price {
@@ -305,8 +313,7 @@ header nav a:hover {
 .about-image {
     max-width: 100%;
     border-radius: 5px;
-    background-color: #ecf0f1; /* Placeholder color */
-    min-height: 300px; /* Placeholder height */
+    background-color: #ecf0f1;
 }
 
 .about-text h3 {

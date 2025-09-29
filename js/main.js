@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartCounter = document.querySelector('.cart-counter');
     const cartTotalAmount = document.querySelector('.cart-total-amount');
 
-    let cart = JSON.parse(localStorage.getItem('impresionarte_cart')) || [];
+    let cart = JSON.parse(localStorage.getItem('impresionarte_cart_v2')) || [];
 
     // --- FUNCIONES ---
 
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const saveCartToStorage = () => {
-        localStorage.setItem('impresionarte_cart', JSON.stringify(cart));
+        localStorage.setItem('impresionarte_cart_v2', JSON.stringify(cart));
     };
 
     const updateCart = () => {
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: productElement.dataset.id,
             name: productElement.dataset.name,
             price: parseFloat(productElement.dataset.price),
-            image: productElement.dataset.image,
+            image: productElement.querySelector('img').src,
         };
         addProductToCart(product);
     };
@@ -109,15 +109,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- EVENT LISTENERS ---
 
-    cartIcon.addEventListener('click', openCart);
-    closeCartBtn.addEventListener('click', closeCart);
-    cartOverlay.addEventListener('click', closeCart);
+    if (cartIcon) cartIcon.addEventListener('click', openCart);
+    if (closeCartBtn) closeCartBtn.addEventListener('click', closeCart);
+    if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
 
     addToCartButtons.forEach(button => {
         button.addEventListener('click', handleProductClick);
     });
 
-    cartItemsContainer.addEventListener('click', handleCartActions);
+    if (cartItemsContainer) cartItemsContainer.addEventListener('click', handleCartActions);
 
 
     // --- INICIALIZACIÓN ---
